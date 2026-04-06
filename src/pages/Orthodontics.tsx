@@ -13,27 +13,27 @@ export default function Orthodontics() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">Specialty Care</span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline italic mb-12 tracking-tighter leading-[0.85]">Precision <br /><span className="text-primary not-italic font-medium">Orthodontics</span></h1>
+            <h1 className="text-6xl md:text-7xl lg:text-6xl xl:text-8xl font-headline italic mb-12 tracking-tighter leading-[0.85] break-words">Precision <br /><span className="text-primary not-italic font-medium block mt-2">Orthodontics</span></h1>
             <p className="text-on-surface-variant text-lg md:text-xl font-body leading-relaxed mb-14 max-w-xl opacity-80">
               Beyond simple alignment, our orthodontic department focuses on craniofacial aesthetics and functional harmony. We offer bespoke Invisalign treatments and discreet lingual braces for high-profile professionals who demand perfection without compromise.
             </p>
-            <Link to="/book" className="px-14 py-6 bg-linear-to-r from-primary to-accent-light text-white font-bold uppercase tracking-[0.25em] text-[10px] hover:scale-105 transition-all duration-500 inline-flex items-center gap-4 group shadow-[0_0_30px_rgba(0,210,255,0.2)]">
-              Request Consultation <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-300" />
-            </Link>
+            <div className="flex flex-wrap gap-6 mt-4">
+              <Link to="/book" className="px-10 py-5 bg-linear-to-r from-primary to-accent-light text-white font-bold uppercase tracking-[0.2em] text-[10px] hover:scale-[1.02] transition-all duration-500 inline-flex items-center gap-3 group shadow-[0_0_30px_rgba(0,210,255,0.2)]">
+                Local Consult <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-300" />
+              </Link>
+              <a href="https://smilelifebraces.com/corpus-christi/" target="_blank" rel="noopener noreferrer" className="px-10 py-5 border border-accent-light text-accent-light font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-accent-light hover:text-black transition-all duration-500 inline-flex items-center gap-3 group">
+                Main Ortho Website <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-300" />
+              </a>
+            </div>
           </motion.div>
           <div className="relative">
-            <div className="aspect-[4/5] border border-primary/20 overflow-hidden bg-surface-container-low p-8">
+            <div className="border border-primary/20 overflow-hidden bg-surface-container-low p-4 shadow-2xl">
               <img
-                src="/assets/images/spec-ortho.webp"
-                alt="Orthodontics"
-                className="w-full h-full object-cover grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
+                src="/assets/images/invisalign.jpeg"
+                alt="Invisalign Master Provider"
+                className="w-full h-auto max-h-[650px] object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                 referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.src.includes('unsplash')) {
-                    target.src = "https://images.unsplash.com/photo-1533622597524-a1215e26c0a2?auto=format&fit=crop&q=80&w=1200";
-                  }
-                }}
+                loading="lazy"
               />
             </div>
             <div className="absolute -bottom-12 -right-12 bg-surface-container-low border border-outline-variant p-12 hidden md:block shadow-2xl">
@@ -65,6 +65,28 @@ export default function Orthodontics() {
           ))}
         </div>
 
+        {/* Clinical Imagery Gallery */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-48">
+          <div className="border border-outline-variant bg-surface-container-low p-4 overflow-hidden relative group shadow-xl">
+            <img 
+              src="/assets/images/braces-multicolor.jpeg" 
+              alt="Multi-Color Braces Integration" 
+              className="w-full h-auto md:h-[400px] object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000" 
+              loading="lazy"
+            />
+            <div className="absolute inset-0 border border-[#00D2FF]/30 m-4 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+          </div>
+          <div className="border border-outline-variant bg-surface-container-low p-4 overflow-hidden relative group shadow-xl">
+            <img 
+              src="/assets/images/braces-after.jpeg" 
+              alt="Orthodontic Final Results" 
+              className="w-full h-auto md:h-[400px] object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000" 
+              loading="lazy"
+            />
+            <div className="absolute inset-0 border border-[#00D2FF]/30 m-4 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+          </div>
+        </div>
+
         <div className="bg-surface-container-low border border-outline-variant p-16 md:p-24 lg:p-32">
           <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block text-center">Treatment Options</span>
           <h2 className="text-5xl md:text-7xl font-headline italic mb-24 text-center tracking-tighter leading-[0.9]">Clinical Excellence</h2>
@@ -90,6 +112,18 @@ export default function Orthodontics() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Off-Ramp to Main Ortho Site */}
+        <div className="mt-40 text-center py-24 border-t border-outline-variant">
+          <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block text-center">Comprehensive Care</span>
+          <h2 className="text-4xl md:text-5xl font-headline italic mb-10 tracking-tighter">In-Depth Orthodontics <br/>& Direct Scheduling</h2>
+          <p className="text-on-surface-variant text-lg font-body leading-relaxed mb-12 max-w-2xl mx-auto opacity-80">
+            While we oversee severe interdisciplinary cases here at the specialty center, our dedicated Orthodontics practice handles all standard comprehensive treatments, scheduling, and detailed patient insights.
+          </p>
+          <a href="https://smilelifebraces.com/corpus-christi/" target="_blank" rel="noopener noreferrer" className="px-14 py-6 bg-linear-to-r from-[#0056B3] to-accent-light text-white font-bold uppercase tracking-[0.25em] text-[10px] hover:scale-[1.02] transition-all duration-500 inline-flex items-center gap-4 group shadow-[0_0_30px_rgba(0,210,255,0.2)]">
+            Visit Smile Life Braces <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-300" />
+          </a>
         </div>
       </div>
     </div>

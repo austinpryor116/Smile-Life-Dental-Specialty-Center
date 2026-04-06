@@ -1,10 +1,14 @@
+import React from 'react';
 import { motion } from 'motion/react';
-import { FileText, CreditCard, Calendar, Shield, Waves } from 'lucide-react';
+import { FileText, Calendar, Shield, Waves, ArrowRight, Activity, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function PatientCenter() {
   return (
     <div className="pt-48 pb-48 bg-black">
       <div className="max-w-7xl mx-auto px-8 md:px-12">
+        
+        {/* Header */}
         <div className="mb-32 max-w-3xl">
           <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">For Our Patients</span>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline italic mb-12 tracking-tighter leading-[0.85]">Concierge <br /><span className="text-primary">Experience</span></h1>
@@ -13,11 +17,12 @@ export default function PatientCenter() {
           </p>
         </div>
 
+        {/* Feature Grid */}
         <div className="flex flex-wrap justify-center gap-12 mb-48">
           {[
             { icon: FileText, title: 'Digital Forms', desc: 'Secure online intake paperwork.' },
             { icon: Calendar, title: 'Scheduling', desc: 'Request or reschedule your consultation.' },
-            { icon: Shield, title: 'Recovery Timelines', desc: 'Detailed protocols for post-treatment care and healing.' }
+            { icon: Shield, title: 'Medical Protocols', desc: 'Detailed surgical & healing instructions.' }
           ].map((item, i) => (
             <motion.div 
               key={i} 
@@ -37,22 +42,54 @@ export default function PatientCenter() {
           ))}
         </div>
 
+        {/* Massive Route Portals */}
+        <div className="mb-48">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-7xl font-headline italic tracking-tighter text-white">Clinical Logistics Portals</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Link to="/pre-op" className="group relative overflow-hidden bg-surface-container-low border border-outline-variant p-16 hover:border-[#00D2FF]/50 transition-all duration-500 flex flex-col justify-between min-h-[300px]">
+              <div className="absolute inset-0 bg-linear-to-b from-[#00D2FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <ShieldCheck size={48} strokeWidth={1} className="text-[#00D2FF] mb-12 group-hover:scale-110 transition-transform duration-500" />
+              <div className="relative z-10">
+                <span className="text-[#00D2FF] uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block opacity-70">Prior to Arrival</span>
+                <h3 className="text-4xl font-headline italic text-white mb-6 tracking-tight">Pre-Surgical <br/>Instructions</h3>
+                <div className="flex items-center gap-4 text-white/50 group-hover:text-white transition-colors uppercase tracking-widest text-xs font-bold mt-8">
+                  View Protocol <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-300" />
+                </div>
+              </div>
+            </Link>
+
+            <Link to="/post-op" className="group relative overflow-hidden bg-surface-container-low border border-outline-variant p-16 hover:border-[#00D2FF]/50 transition-all duration-500 flex flex-col justify-between min-h-[300px]">
+              <div className="absolute inset-0 bg-linear-to-b from-[#00D2FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <Activity size={48} strokeWidth={1} className="text-[#00D2FF] mb-12 group-hover:scale-110 transition-transform duration-500" />
+              <div className="relative z-10">
+                <span className="text-[#00D2FF] uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block opacity-70">Biological Integration</span>
+                <h3 className="text-4xl font-headline italic text-white mb-6 tracking-tight">Healing & <br/>Recovery Protocols</h3>
+                <div className="flex items-center gap-4 text-white/50 group-hover:text-white transition-colors uppercase tracking-widest text-xs font-bold mt-8">
+                  View Protocol <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-300" />
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+
+        {/* Short Visual Timeline */}
         <div className="bg-surface-container-low border border-outline-variant p-16 md:p-24 lg:p-32 relative overflow-hidden mb-48">
           <div className="relative z-10">
-            <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">Recovery Protocol</span>
-            <h2 className="text-5xl md:text-7xl font-headline italic mb-16 tracking-tighter leading-[0.9]">Path to Recovery</h2>
+            <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">Recovery Roadmap</span>
+            <h2 className="text-5xl md:text-7xl font-headline italic mb-16 tracking-tighter leading-[0.9]">The Biological Path</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-              {/* Connector line for desktop */}
               <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-accent-light/10 -translate-y-1/2 z-0"></div>
               
               {[
-                { time: '24HR', title: 'Initial Healing', desc: 'Critical stabilization and biological rest.' },
-                { time: '4-DAY', title: 'Tissue Integration', desc: 'Primary structural adaptation phase.' },
-                { time: '1-WEEK', title: 'Functional Restoration', desc: 'Return to standard biological rhythm.' }
+                { time: '24HR', title: 'Initial Stabilization', desc: 'Critical hemostasis mapping and biological rest.' },
+                { time: '72HR', title: 'Tissue Integration', desc: 'Primary structural fibrin adaptation phase begins.' },
+                { time: '7-DAY', title: 'Suture Resolution', desc: 'Accelerated soft-tissue healing timeline achieved.' }
               ].map((milestone, i) => (
                 <div key={i} className="relative z-10 flex flex-col items-center text-center group">
-                  <div className="w-24 h-24 rounded-full bg-black border border-accent-light/30 flex items-center justify-center mb-8 group-hover:border-accent-light transition-all duration-500">
+                  <div className="w-24 h-24 rounded-full bg-black border border-accent-light/30 flex items-center justify-center mb-8 group-hover:border-accent-light transition-all duration-500 shadow-[0_0_15px_rgba(0,210,255,0.05)]">
                     <span className="font-headline italic text-2xl text-accent-light">{milestone.time}</span>
                   </div>
                   <h4 className="font-bold uppercase tracking-[0.3em] text-[11px] mb-4 text-white">{milestone.title}</h4>
@@ -63,6 +100,7 @@ export default function PatientCenter() {
           </div>
         </div>
 
+        {/* The Experience */}
         <div className="bg-surface-container-low border border-outline-variant p-16 md:p-24 lg:p-32 relative overflow-hidden">
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-24 lg:gap-32 items-center">
             <div>
@@ -94,12 +132,7 @@ export default function PatientCenter() {
                   alt="Luxury Suite"
                   className="w-full h-full object-cover grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (!target.src.includes('unsplash')) {
-                      target.src = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000";
-                    }
-                  }}
+                  loading="lazy"
                 />
               </div>
               <div className="absolute -bottom-12 -left-12 bg-surface-container-low border border-outline-variant p-12 hidden lg:block shadow-2xl">
@@ -112,6 +145,7 @@ export default function PatientCenter() {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );

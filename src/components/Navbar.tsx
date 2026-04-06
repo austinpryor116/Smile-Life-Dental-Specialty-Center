@@ -5,7 +5,11 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const navLinks = [
-  { name: 'Departments', href: '/departments' },
+  { 
+    name: 'Departments', 
+    href: '/departments',
+    activePaths: ['/departments', '/periodontics', '/orthodontics']
+  },
   { name: 'Patient Center', href: '/patient-center' },
   { name: 'Provider Center', href: '/provider-center' },
 ];
@@ -29,9 +33,9 @@ export default function Navbar() {
   }, [location.pathname]);
 
   return (
-    <nav className={cn(
+    <nav aria-label="Main Navigation" className={cn(
       "fixed top-0 z-50 w-full pl-5 pr-6 md:pr-12 py-6 md:py-8 flex justify-between items-center transition-all duration-500",
-      scrolled ? "bg-black/90 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
+      scrolled ? "bg-black/10 backdrop-blur-2xl border-b border-white/10 shadow-[0_4_30px_rgba(0,0,0,0.1)]" : "bg-transparent"
     )}>
       <Link to="/" className="z-50 flex items-center group">
         <img 
@@ -55,20 +59,26 @@ export default function Navbar() {
       
       {/* Desktop Links */}
       <div className="hidden md:flex space-x-12 items-center">
-        {navLinks.map((link) => (
-          <Link
-            key={link.name}
-            to={link.href}
-            className={cn(
-              "font-body tracking-[0.3em] uppercase text-[10px] font-bold transition-all duration-300",
-              location.pathname === link.href 
-                ? "text-primary" 
-                : "text-white opacity-60 hover:opacity-100 hover:text-primary"
-            )}
-          >
-            {link.name}
-          </Link>
-        ))}
+        {navLinks.map((link) => {
+          const isActive = location.pathname === link.href || 
+            (link.activePaths && link.activePaths.some(p => location.pathname.startsWith(p)));
+          
+          return (
+            <Link
+              key={link.name}
+              to={link.href}
+              aria-current={isActive ? "page" : undefined}
+              className={cn(
+                "font-body tracking-[0.3em] uppercase text-[10px] font-bold transition-all duration-300",
+                isActive 
+                  ? "text-primary border-b border-primary pb-1" 
+                  : "text-white opacity-60 hover:opacity-100 hover:text-primary"
+              )}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
       </div>
 
       <div className="flex items-center gap-6">
@@ -83,6 +93,8 @@ export default function Navbar() {
         <button 
           className="md:hidden text-white z-50 p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -98,18 +110,23 @@ export default function Navbar() {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed inset-0 bg-black z-40 flex flex-col items-center justify-center space-y-12"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={cn(
-                  "font-headline italic text-4xl tracking-tighter transition-all duration-300",
-                  location.pathname === link.href ? "text-primary" : "text-white opacity-60"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href || 
+                (link.activePaths && link.activePaths.some(p => location.pathname.startsWith(p)));
+              
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={cn(
+                    "font-headline italic text-4xl tracking-tighter transition-all duration-300",
+                    isActive ? "text-primary" : "text-white opacity-60"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
             <Link 
               to="/book"
               className="bg-primary text-black px-12 py-4 text-xs font-body font-bold tracking-[0.2em] uppercase"

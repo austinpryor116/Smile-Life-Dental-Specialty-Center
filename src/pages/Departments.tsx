@@ -7,21 +7,21 @@ const departments = [
     title: 'General Dentistry',
     href: '/general-dentistry',
     description: 'The foundation of every beautiful smile is meticulous general care. Our general dentistry department provides high-end preventive and restorative services with clinical precision.',
-    image: '/assets/images/spec-general.webp',
+    image: '/assets/images/general-dentist-chair.jpeg',
     gridClass: 'col-span-12 md:col-span-12'
   },
   {
     title: 'Periodontics',
     href: '/periodontics',
     description: 'Specializing in the foundation of your smile. Our periodontists utilize laser therapy and advanced grafting techniques to treat complex gum disease.',
-    image: '/assets/images/spec-perio.webp',
+    image: '/assets/images/dental-implant.jpeg',
     gridClass: 'col-span-12 md:col-span-6'
   },
   {
     title: 'Orthodontics',
     href: '/orthodontics',
     description: 'Beyond simple alignment, our orthodontic department focuses on craniofacial aesthetics and functional harmony.',
-    image: '/assets/images/spec-ortho.webp',
+    image: '/assets/images/invisalign.jpeg',
     gridClass: 'col-span-12 md:col-span-6'
   }
 ];
@@ -48,40 +48,29 @@ export default function Departments() {
               transition={{ duration: 1, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="group flex flex-col bg-surface-container-high overflow-hidden w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(50%-2rem)]"
             >
-              <div className="h-[500px] overflow-hidden relative">
-                <img
-                  src={dept.image}
-                  alt={dept.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (!target.src.includes('unsplash')) {
-                      const fallbacks: Record<string, string> = {
-                        'spec-ortho.webp': 'https://images.unsplash.com/photo-1533622597524-a1215e26c0a2?auto=format&fit=crop&q=80&w=1200',
-                        'spec-perio.webp': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1200',
-                        'spec-general.webp': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1200'
-                      };
-                      const fileName = dept.image.split('/').pop() || '';
-                      target.src = fallbacks[fileName] || "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1200";
-                    }
-                  }}
-                />
-                <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500"></div>
-              </div>
-              
-              <div className="p-10 lg:p-14 flex flex-col flex-grow">
-                <h2 className="text-4xl lg:text-5xl font-headline italic mb-8 group-hover:text-accent-light transition-colors duration-300 tracking-tighter">{dept.title}</h2>
-                <p className="text-on-surface-variant text-sm font-body leading-relaxed mb-12 flex-grow opacity-70 group-hover:opacity-100 transition-opacity duration-500">
-                  {dept.description}
-                </p>
-                <Link 
-                  to={dept.href} 
-                  className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent-light flex items-center gap-4 group/link"
-                >
-                  EXPLORE SPECIALTY <ArrowRight size={14} className="group-hover/link:translate-x-2 transition-transform duration-300" />
-                </Link>
-              </div>
+              <Link to={dept.href} className="flex flex-col h-full w-full group/link">
+                <div className="h-[500px] overflow-hidden relative">
+                  <img
+                    src={dept.image}
+                    alt={dept.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+
+                  />
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+                
+                <div className="p-10 lg:p-14 flex flex-col flex-grow">
+                  <h2 className="text-4xl lg:text-5xl font-headline italic mb-8 group-hover:text-accent-light transition-colors duration-300 tracking-tighter">{dept.title}</h2>
+                  <p className="text-on-surface-variant text-sm font-body leading-relaxed mb-12 flex-grow opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+                    {dept.description}
+                  </p>
+                  <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent-light flex items-center gap-4">
+                    EXPLORE SPECIALTY <ArrowRight size={14} className="group-hover/link:translate-x-2 transition-transform duration-300" />
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

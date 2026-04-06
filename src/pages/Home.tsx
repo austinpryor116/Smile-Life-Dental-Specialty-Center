@@ -1,36 +1,101 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ShieldCheck, Star, Users, Activity, Layers, Zap, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [coordinate, setCoordinate] = useState({ x: 0, y: 0, show: false, label: '' });
+
+  useEffect(() => {
+    const animateCoord = () => {
+      setCoordinate({
+        x: Math.floor(Math.random() * 60) + 20, // Keep it towards the center-ish
+        y: Math.floor(Math.random() * 60) + 20,
+        show: true,
+        label: `X: ${(Math.random() * 500).toFixed(1)} / Y: ${(Math.random() * 500).toFixed(1)}`
+      });
+      setTimeout(() => setCoordinate(prev => ({ ...prev, show: false })), 2000);
+    };
+    
+    // Initial delay then trigger loop
+    const timeoutId = setTimeout(() => {
+      animateCoord();
+      const intervalId = setInterval(animateCoord, 8000);
+      // Clean up interval if component unmounts
+      return () => clearInterval(intervalId);
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[95vh] flex items-center overflow-hidden">
+      <section className="relative h-[95vh] flex items-center overflow-hidden bg-black">
+        {/* Holographic Glow Foundation */}
+        <div className="absolute inset-0 z-0 pointer-events-none mix-blend-screen" style={{ background: 'radial-gradient(circle at 80% 50%, rgba(0, 210, 255, 0.07) 0%, transparent 50%)' }}></div>
+        
+        {/* Geometric Grid Overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none z-0" 
+          style={{ 
+            backgroundImage: 'linear-gradient(#1A1A1A 0.5px, transparent 0.5px), linear-gradient(90deg, #1A1A1A 0.5px, transparent 0.5px)',
+            backgroundSize: '50px 50px' 
+          }}
+        ></div>
+
+        {/* Dynamic Coordinate Flash */}
+        <AnimatePresence>
+          {coordinate.show && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.5, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="absolute z-10 pointer-events-none font-body text-[#00D2FF]"
+              style={{ left: `${coordinate.x}%`, top: `${coordinate.y}%` }}
+            >
+              <div className="w-[3px] h-[3px] bg-[#00D2FF] rounded-full mb-1 shadow-[0_0_10px_#00D2FF]"></div>
+              <span className="text-[10px] tracking-widest uppercase font-bold">{coordinate.label}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 flex justify-end pointer-events-none"
         >
-          <img
-            src="/assets/images/hero-bg.webp"
-            alt="Luxury Dental Clinic Interior - Smile Life Dental Specialty Center"
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              if (!target.src.includes('unsplash')) {
-                target.src = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000";
-              }
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-primary/5"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-accent-light/5"></div>
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div 
+            className="relative w-full lg:w-[40%] pr-0 lg:pr-[5%] h-full flex items-center justify-center overflow-hidden"
+            style={{ WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 80%)', maskImage: 'radial-gradient(circle, black 40%, transparent 80%)' }}
+          >
+            {/* The Scanning Beam */}
+            <motion.div
+              animate={{ x: ['-20%', '120%'] }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              className="absolute top-0 bottom-0 w-[1px] bg-[#00D2FF]/30 shadow-[0_0_40px_rgba(0,210,255,0.7)] z-20 pointer-events-none"
+              style={{ left: '0%' }}
+            ></motion.div>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="w-[140%] h-[140%] max-w-none object-contain mix-blend-screen animate-[pulse_4s_cubic-bezier(0.4,0,0.6,1)_infinite]"
+              style={{ 
+                filter: 'drop-shadow(0 0 20px rgba(0, 210, 255, 0.3))',
+                clipPath: 'circle(35% at 50% 50%)'
+              }}
+            >
+              <source src="/assets/video/hero-molar-3d.mp4" type="video/mp4" />
+            </video>
+          </div>
         </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full pt-28 md:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -40,7 +105,10 @@ export default function Home() {
             <span className="text-primary uppercase tracking-[0.6em] text-[10px] font-bold mb-10 block">
               Excellence in Specialty Dentistry
             </span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline italic mb-12 leading-[0.85] tracking-tighter">
+            <h1 
+              className="text-6xl md:text-8xl lg:text-9xl font-headline italic mb-12 leading-[0.85] tracking-tighter"
+              style={{ textShadow: '0 0 30px rgba(0, 210, 255, 0.1)' }}
+            >
               Artistry Meets <br />
               <span className="text-primary not-italic font-medium">Clinical Precision</span>
             </h1>
@@ -80,16 +148,12 @@ export default function Home() {
             <div className="lg:w-1/2">
               <div className="relative aspect-video overflow-hidden border border-white/5 p-4 bg-white/5 backdrop-blur-sm">
                 <img 
-                  src="/assets/images/hero-bg.webp" 
+                  src="/assets/images/3d-scan.jpeg" 
                   alt="3D Intraoral Scanner Tip" 
                   className="w-full h-full object-cover grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (!target.src.includes('unsplash')) {
-                      target.src = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000";
-                    }
-                  }}
+                  loading="lazy"
+
                 />
               </div>
             </div>
@@ -110,15 +174,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-20 lg:gap-32 max-w-6xl mx-auto">
             {[
-              { icon: ShieldCheck, title: 'BOARD CERTIFIED', desc: 'Clinical leadership in every discipline.' },
+              { icon: ShieldCheck, title: 'CLINICAL EXCELLENCE', desc: 'Uncompromising standards in every procedure.' },
               { icon: Star, title: 'LUXURY EXPERIENCE', desc: 'A concierge-level sanctuary for patient comfort.' },
               { icon: Users, title: 'REFERRAL BRIDGE', desc: 'A seamless specialized extension of primary care dentistry.' }
             ].map((pillar, i) => (
-              <div key={i} className="flex flex-col items-center text-center group">
-                <div className="mb-12 text-accent-light group-hover:scale-110 transition-transform duration-700 ease-out">
+              <div key={i} className="flex flex-col items-center text-center group h-full justify-start border-none outline-none">
+                <div className="mb-12 text-[#00D2FF] drop-shadow-[0_0_5px_rgba(0,210,255,0.6)] group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(0,210,255,1)] transition-all duration-700 ease-out">
                   <pillar.icon size={48} strokeWidth={0.75} />
                 </div>
-                <h3 className="text-[11px] font-sans font-bold tracking-[0.4em] mb-8 text-white">{pillar.title}</h3>
+                <h3 className="text-[11px] font-sans font-bold tracking-[2px] uppercase mb-8 text-white">{pillar.title}</h3>
                 <p className="text-on-surface-variant text-sm font-body leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity duration-500">
                   {pillar.desc}
                 </p>
@@ -135,16 +199,12 @@ export default function Home() {
             <div className="lg:w-1/2">
               <div className="aspect-[3/4] overflow-hidden border border-white/5 p-6 bg-white/5">
                 <img 
-                  src="/assets/images/dr-sara-profile.webp" 
-                  alt="Dr. Sara - Specialist Portrait" 
-                  className="w-full h-full object-cover"
+                  src="/assets/images/dr-sara-holding-implant.jpg" 
+                  alt="Dr. Sara Alhachache - Specialist Portrait" 
+                  className="w-full h-full object-cover object-[center_10%]"
                   referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (!target.src.includes('unsplash')) {
-                      target.src = "https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=1200";
-                    }
-                  }}
+                  loading="lazy"
+
                 />
               </div>
             </div>
@@ -152,10 +212,13 @@ export default function Home() {
               <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">The Specialist's Philosophy</span>
               <h2 className="text-5xl md:text-7xl font-headline italic mb-10 tracking-tighter leading-[0.9]">A Commitment to <br />Biological Integrity.</h2>
               <p className="text-on-surface-variant text-lg font-body leading-relaxed opacity-80 mb-12">
-                Dr. Sara specializes in complex periodontal therapies and microsurgical reconstructions. Her approach balances systemic oral health with the poetry of dental geometry.
+                Dr. Sara Alhachache specializes in complex periodontal therapies and microsurgical reconstructions. Her approach balances systemic oral health with the poetry of dental geometry.
+              </p>
+              <p className="text-xl md:text-2xl font-headline italic text-primary leading-relaxed border-l-2 border-primary/40 pl-6 mb-12 tracking-wide text-white/90">
+                "True structural longevity isn't born from mere treatment—it is born from an uncompromising respect for biological geometry. We do not just build foundations; we architect a secure sanctuary for systemic healing."
               </p>
               <div className="font-signature text-5xl text-accent-light opacity-80">
-                Dr. Sara
+                Dr. Sara Alhachache
               </div>
             </div>
           </div>
@@ -193,27 +256,27 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-12">
             {[
               { 
                 title: 'Orthodontics', 
                 desc: 'Alignment is the poetry of dental geometry. We architect structural harmony.', 
                 href: '/orthodontics',
-                image: '/assets/images/spec-ortho.webp',
+                image: '/assets/images/invisalign.jpeg',
                 alt: 'Digital Smile Design and Orthodontic Alignment in Corpus Christi, TX'
               },
               { 
                 title: 'Periodontics', 
                 desc: 'The foundation of brilliance lies beneath the surface. We utilize microsurgical protocols for structural permanence.', 
                 href: '/periodontics',
-                image: '/assets/images/spec-perio.webp',
+                image: '/assets/images/dental-implant.jpeg',
                 alt: 'Specialized Periodontal and Implant Surgery in Corpus Christi, TX'
               },
               { 
                 title: 'General Dentistry', 
                 desc: 'Health is the canvas upon which we paint. Surgical-grade commitment to total oral biological health.', 
                 href: '/general-dentistry',
-                image: '/assets/images/spec-general.webp',
+                image: '/assets/images/general-dentist-chair.jpeg',
                 alt: 'Advanced Diagnostic Mapping and General Oral Health in Corpus Christi, TX'
               }
             ].map((spec, i) => (
@@ -223,36 +286,28 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: i * 0.2 }}
-                className="group flex flex-col bg-surface-container-high overflow-hidden w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(50%-2rem)]"
+                className="group flex flex-col bg-surface-container-high overflow-hidden"
               >
+              <Link to={spec.href} className="flex flex-col w-full h-full group/link">
                 <div className="aspect-[4/5] overflow-hidden relative">
                   <img 
                     src={spec.image} 
                     alt={spec.alt}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
                     referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      if (!target.src.includes('unsplash')) {
-                        const fallbacks: Record<string, string> = {
-                          'spec-ortho.webp': 'https://images.unsplash.com/photo-1533622597524-a1215e26c0a2?auto=format&fit=crop&q=80&w=1200',
-                          'spec-perio.webp': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1200',
-                          'spec-general.webp': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1200'
-                        };
-                        const fileName = spec.image.split('/').pop() || '';
-                        target.src = fallbacks[fileName] || "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1200";
-                      }
-                    }}
+                  loading="lazy"
+
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
                 <div className="p-10 lg:p-14 flex flex-col flex-grow">
                   <h4 className="text-3xl lg:text-4xl font-headline italic mb-8 group-hover:text-accent-light transition-colors duration-300 tracking-tighter">{spec.title}</h4>
                   <p className="text-on-surface-variant text-sm font-body leading-relaxed mb-12 flex-grow opacity-70 group-hover:opacity-100 transition-opacity duration-500">{spec.desc}</p>
-                  <Link to={spec.href} className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent-light flex items-center gap-4 group/link">
+                  <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent-light flex items-center gap-4">
                     EXPLORE SPECIALTY <ArrowRight size={14} className="group-hover/link:translate-x-2 transition-transform duration-300" />
-                  </Link>
+                  </div>
                 </div>
+              </Link>
               </motion.div>
             ))}
           </div>

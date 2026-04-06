@@ -22,18 +22,14 @@ export default function GeneralDentistry() {
             </Link>
           </motion.div>
           <div className="relative">
-            <div className="aspect-[4/5] border border-primary/20 overflow-hidden bg-surface-container-low p-8">
+            <div className="border border-primary/20 overflow-hidden bg-surface-container-low p-4">
               <img
-                src="/assets/images/spec-general.webp"
+                src="/assets/images/general-dentist-office.jpeg"
                 alt="General Dentistry"
-                className="w-full h-full object-cover grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
+                className="w-full h-auto max-h-[600px] object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                 referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.src.includes('unsplash')) {
-                    target.src = "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1200";
-                  }
-                }}
+                loading="lazy"
+
               />
             </div>
             <div className="absolute -bottom-12 -right-12 bg-surface-container-low border border-outline-variant p-12 hidden md:block shadow-2xl">
@@ -95,16 +91,12 @@ export default function GeneralDentistry() {
               className="relative aspect-[4/5] overflow-hidden border border-white/5 p-4 bg-white/5"
             >
               <img 
-                src="/assets/images/general-dentist-profile.webp" 
-                alt="Dr. Michael Chen" 
+                src="/assets/images/dr-vasquez.jpg" 
+                alt="Dr. Vasquez" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.src.includes('unsplash')) {
-                    target.src = "https://images.unsplash.com/photo-1559839734-2b71f1e3c7e5?auto=format&fit=crop&q=80&w=1200";
-                  }
-                }}
+                loading="lazy"
+
               />
               <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             </motion.div>
@@ -115,10 +107,13 @@ export default function GeneralDentistry() {
               transition={{ duration: 1 }}
             >
               <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">LEAD CLINICAL DENTIST</span>
-              <h2 className="text-5xl md:text-7xl font-headline italic mb-10 tracking-tighter leading-[0.9]">Dr. Michael Chen, <br/>General Dentistry</h2>
+              <h2 className="text-5xl md:text-7xl font-headline italic mb-10 tracking-tighter leading-[0.9]">Dr. Vasquez, <br/>General Dentistry</h2>
               <div className="space-y-8">
+                <p className="text-xl md:text-2xl font-headline italic text-accent-light leading-relaxed border-l-2 border-[#00D2FF]/40 pl-6 mb-8 mt-4 tracking-wide">
+                  "Preventative care is not simply a routine interaction—it is a lifelong commitment to preserving your biological masterpiece. We blend precision digital mapping with biomimetic artistry to ensure your signature smile commands the test of time."
+                </p>
                 <p className="text-on-surface-variant text-lg font-body leading-relaxed opacity-80">
-                  As the primary architect of your oral health, Dr. Michael Chen approaches general dentistry with a focus on comprehensive biological integrity. By utilizing advanced digital mapping and biomimetic principles, every diagnostic evaluation is designed to preserve and protect your natural dentition.
+                  As the primary architect of your oral health, Dr. Vasquez approaches general dentistry with a focus on comprehensive biological integrity. By utilizing advanced digital mapping and biomimetic principles, every diagnostic evaluation is designed to preserve and protect your natural dentition.
                 </p>
                 <p className="text-on-surface-variant text-lg font-body leading-relaxed opacity-80">
                   Committed to the 'Clinical Sanctuary' philosophy, the general dentistry team ensures that routine maintenance, composite restorations, and preventative care are executed with the same surgical-grade precision and uncompromised comfort found in our specialty departments.
