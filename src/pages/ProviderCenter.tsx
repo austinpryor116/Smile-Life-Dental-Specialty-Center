@@ -73,7 +73,7 @@ export default function ProviderCenter() {
         body: JSON.stringify({
           access_key: accessKey,
           subject: `B2B Clinical Collaboration Request from Dr. ${formState.name} (${formState.practiceName})`,
-          from_name: 'Provider Center Form',
+          from_name: 'Referring Provider Hub Form',
           ...formState
         })
       });
@@ -93,7 +93,7 @@ export default function ProviderCenter() {
   };
 
   return (
-    <div className="bg-[#000000] min-h-screen text-white pt-32 pb-0">
+    <div className="min-h-screen text-white pt-32 pb-0">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-8 md:px-12 pt-16 pb-24 text-center">
         <motion.h1 
@@ -101,7 +101,7 @@ export default function ProviderCenter() {
           animate={{ opacity: 1, y: 0 }}
           className="text-5xl md:text-7xl lg:text-8xl font-headline italic tracking-tighter mb-6"
         >
-          Provider Center
+          Referring Provider Hub
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -130,7 +130,7 @@ export default function ProviderCenter() {
               <a 
                 href="/assets/downloads/smile-life-periodontics-referral-form.pdf" 
                 onClick={(e) => handleDownload(e, "/assets/downloads/smile-life-periodontics-referral-form.pdf", "Smile Life Periodontics Referral Form.pdf")}
-                className="w-full flex items-center justify-between px-8 py-6 border border-white/20 hover:border-[#00D2FF] text-[#00D2FF] font-body text-xs font-bold tracking-[0.2em] uppercase transition-all group bg-[#111111]/50"
+                className="w-full flex items-center justify-between px-8 py-6 border border-white/20 hover:border-[#00D2FF] text-[#00D2FF] font-body text-xs font-bold tracking-[0.2em] uppercase transition-all group bg-surface-container-low"
               >
                 Download Smile Life Periodontics Referral Form (PDF)
                 <FileDown size={20} className="group-hover:translate-y-1 transition-transform" />
@@ -138,7 +138,7 @@ export default function ProviderCenter() {
               <a 
                 href="/assets/downloads/orthodontics-referral-pad.pdf" 
                 onClick={(e) => handleDownload(e, "/assets/downloads/orthodontics-referral-pad.pdf", "Orthodontics Referral Pad.pdf")}
-                className="w-full flex items-center justify-between px-8 py-6 border border-white/20 hover:border-[#00D2FF] text-[#00D2FF] font-body text-xs font-bold tracking-[0.2em] uppercase transition-all group bg-[#111111]/50"
+                className="w-full flex items-center justify-between px-8 py-6 border border-white/20 hover:border-[#00D2FF] text-[#00D2FF] font-body text-xs font-bold tracking-[0.2em] uppercase transition-all group bg-surface-container-low"
               >
                 Download Orthodontics Referral Pad (PDF)
                 <FileDown size={20} className="group-hover:translate-y-1 transition-transform" />
@@ -187,7 +187,7 @@ export default function ProviderCenter() {
       </div>
 
       {/* Section E: Professional Exchange CTA */}
-      <div className="py-32 text-center bg-radial from-[#111111] to-black border-y border-white/5">
+      <div className="py-32 text-center bg-surface-container border-y border-white/5">
         <div className="max-w-2xl mx-auto px-8">
           <h2 className="text-5xl font-headline italic tracking-tighter mb-6">Lunch & Learn / Clinical Exchange</h2>
           <p className="font-body text-lg text-white/60 leading-relaxed mb-12">
@@ -195,7 +195,7 @@ export default function ProviderCenter() {
           </p>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#0056B3] border border-[#00D2FF] text-white px-12 py-5 font-body text-xs font-bold uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(0,210,255,0.2)] hover:shadow-[0_0_40px_rgba(0,210,255,0.4)] hover:-translate-y-1 transition-all duration-300"
+            className="bg-[#0056B3] border border-[#00D2FF] text-white px-12 py-5 font-body text-xs font-bold uppercase tracking-[0.2em] shadow-[0_0_40px_rgba(0,210,255,0.3)] hover:shadow-[0_0_80px_rgba(0,210,255,0.6)] hover:-translate-y-1 transition-all duration-300"
           >
             Request Clinical Exchange
           </button>
@@ -203,7 +203,7 @@ export default function ProviderCenter() {
       </div>
 
       {/* Section B: Digital Integration */}
-      <div className="bg-[#111111] py-32 border-y border-white/5">
+      <div className="bg-surface-container-low py-32 border-y border-white/5">
         <div className="max-w-4xl mx-auto px-8 md:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -264,9 +264,9 @@ export default function ProviderCenter() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2 }}
-                className="text-center bg-black"
+                className="text-center "
               >
-                <div className="w-16 h-16 mx-auto bg-[#1A1A1A] border-2 border-[#0056B3] rounded-full flex items-center justify-center font-headline italic text-2xl text-white mb-8">
+                <div className="w-16 h-16 mx-auto bg-surface-container-high border-2 border-[#0056B3] rounded-full flex items-center justify-center font-headline italic text-2xl text-white mb-8">
                   {cycle.step}
                 </div>
                 <h3 className="font-body text-lg font-bold text-white mb-4 uppercase tracking-widest">{cycle.title}</h3>
@@ -287,12 +287,12 @@ export default function ProviderCenter() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-sm overflow-y-auto"
           >
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="bg-[#000000] border border-white/20 w-full max-w-4xl relative shadow-2xl"
-            >
+              <motion.div 
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                className="bg-surface-container border border-white/20 w-full max-w-4xl relative shadow-2xl"
+              >
               <button 
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 z-10"
@@ -318,23 +318,23 @@ export default function ProviderCenter() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                           <label htmlFor="name" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Name</label>
-                          <input id="name" type="text" name="name" required value={formState.name} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors" placeholder="Dr. First Last" />
+                          <input id="name" type="text" name="name" required value={formState.name} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors" placeholder="Dr. First Last" />
                         </div>
                         <div>
                           <label htmlFor="title" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Title (e.g., DDS, DMD, OMFS)</label>
-                          <input id="title" type="text" name="title" required value={formState.title} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors" placeholder="DDS, MS" />
+                          <input id="title" type="text" name="title" required value={formState.title} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors" placeholder="DDS, MS" />
                         </div>
                         <div>
                           <label htmlFor="practiceName" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Practice Name</label>
-                          <input id="practiceName" type="text" name="practiceName" value={formState.practiceName} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors" placeholder="Specialty Associates" />
+                          <input id="practiceName" type="text" name="practiceName" value={formState.practiceName} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors" placeholder="Specialty Associates" />
                         </div>
                         <div>
                           <label htmlFor="email" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Contact Email</label>
-                          <input id="email" type="email" name="email" required value={formState.email} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors" placeholder="doctor@practice.com" />
+                          <input id="email" type="email" name="email" required value={formState.email} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors" placeholder="doctor@practice.com" />
                         </div>
                         <div className="md:col-span-2">
                           <label htmlFor="phone" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Contact Phone</label>
-                          <input id="phone" type="tel" name="phone" value={formState.phone} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors" placeholder="(555) 123-4567" />
+                          <input id="phone" type="tel" name="phone" value={formState.phone} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors" placeholder="(555) 123-4567" />
                         </div>
                       </div>
 
@@ -343,7 +343,7 @@ export default function ProviderCenter() {
                         <div>
                           <label htmlFor="inquiryType" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Inquiry Type</label>
                           <div className="relative">
-                            <select id="inquiryType" name="inquiryType" required value={formState.inquiryType} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors appearance-none">
+                            <select id="inquiryType" name="inquiryType" required value={formState.inquiryType} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors appearance-none">
                               <option value="" disabled className="text-white/30">Select Option</option>
                               <option value="Case Consultation">Case Consultation</option>
                               <option value="Facility Tour">Facility Tour</option>
@@ -357,7 +357,7 @@ export default function ProviderCenter() {
                         <div>
                           <label htmlFor="practiceType" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Practice Type</label>
                           <div className="relative">
-                            <select id="practiceType" name="practiceType" required value={formState.practiceType} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors appearance-none">
+                            <select id="practiceType" name="practiceType" required value={formState.practiceType} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors appearance-none">
                               <option value="" disabled className="text-white/30">Select Type</option>
                               <option value="General Practice">General Practice</option>
                               <option value="Multi-Specialty">Multi-Specialty</option>
@@ -371,7 +371,7 @@ export default function ProviderCenter() {
                         <div>
                           <label htmlFor="communicationPreference" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Communication Preference</label>
                           <div className="relative">
-                            <select id="communicationPreference" name="communicationPreference" required value={formState.communicationPreference} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors appearance-none">
+                            <select id="communicationPreference" name="communicationPreference" required value={formState.communicationPreference} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors appearance-none">
                               <option value="" disabled className="text-white/30">Select Preference</option>
                               <option value="Office Phone">Office Phone</option>
                               <option value="Personal Mobile">Personal Mobile</option>
@@ -384,7 +384,7 @@ export default function ProviderCenter() {
                         <div>
                           <label htmlFor="collaborationScope" className="block font-body text-xs tracking-widest uppercase text-white/70 mb-3 font-bold">Collaboration Scope</label>
                           <div className="relative">
-                            <select id="collaborationScope" name="collaborationScope" required value={formState.collaborationScope} onChange={handleChange} className="w-full bg-[#1A1A1A] border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors appearance-none">
+                            <select id="collaborationScope" name="collaborationScope" required value={formState.collaborationScope} onChange={handleChange} className="w-full bg-surface-container-high border-b border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors appearance-none">
                               <option value="" disabled className="text-white/30">Select Scope</option>
                               <option value="Single-Site Perio">Single-Site Perio</option>
                               <option value="Full-Arch Reconstruction">Full-Arch Reconstruction</option>
@@ -408,7 +408,7 @@ export default function ProviderCenter() {
                           required
                           value={formState.message} 
                           onChange={handleChange} 
-                          className="w-full bg-[#1A1A1A] border border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-[#222] transition-colors resize-none mb-2" 
+                          className="w-full bg-surface-container-high border border-white/20 text-white px-4 py-4 font-body focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#00D2FF] focus:border-[#00D2FF] focus:bg-surface-container-highest transition-colors resize-none mb-2" 
                           placeholder="Briefly describe the types of cases or clinical collaboration you would like to discuss..." 
                         />
                         <p className="font-body text-[10px] uppercase tracking-wide text-[#00D2FF]/70">
@@ -419,7 +419,7 @@ export default function ProviderCenter() {
                       <button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="w-full bg-linear-to-r from-[#0056B3] to-[#00D2FF] text-white py-6 font-body font-bold tracking-[0.25em] uppercase text-xs mt-8 hover:shadow-[0_0_30px_rgba(0,210,255,0.4)] transition-all"
+                        className="w-full bg-linear-to-r from-[#0056B3] to-[#00D2FF] text-white py-6 font-body font-bold tracking-[0.25em] uppercase text-xs mt-8 shadow-[0_0_40px_rgba(0,210,255,0.3)] hover:shadow-[0_0_80px_rgba(0,210,255,0.6)] transition-all"
                       >
                         {isSubmitting ? 'Sending Proposal...' : 'Send Proposal'}
                       </button>

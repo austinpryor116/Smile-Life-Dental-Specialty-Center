@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export default function Legal() {
   return (
-    <div className="pt-48 pb-48 bg-black min-h-screen">
+    <div className="pt-48 pb-48  min-h-screen">
       <div className="max-w-4xl mx-auto px-8 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -21,7 +21,11 @@
 
 @layer base {
   body {
-    @apply bg-background text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary;
+    @apply text-on-surface font-body antialiased selection:bg-primary selection:text-on-primary;
+    background: linear-gradient(135deg, #404040 0%, #171717 40%, #000000 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;

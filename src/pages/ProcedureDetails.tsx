@@ -22,7 +22,7 @@ export default function ProcedureDetails() {
   if (!procedureData) return null;
 
   return (
-    <div className="pt-48 pb-48 bg-black min-h-screen">
+    <div className="pt-48 pb-48  min-h-screen">
       <div className="max-w-7xl mx-auto px-8 md:px-12">
         <Link to="/periodontics" className="inline-flex items-center gap-3 text-white/50 hover:text-[#00D2FF] transition-colors mb-16 group font-bold tracking-widest uppercase text-[10px]">
           <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-300" /> Back to Clinical Directory

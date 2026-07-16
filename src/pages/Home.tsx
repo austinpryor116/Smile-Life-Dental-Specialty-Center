@@ -1,6 +1,21 @@
+/**
+ * Application Homepage (Landing Route)
+ * 
+ * Serves as the primary entry point for the Smile Life Dental Specialty Center.
+ * Implements a complex, scroll-driven cinematic layout using Framer Motion (`motion/react`)
+ * to handle scroll-linked entrance animations and staggered staggered child elements.
+ * 
+ * Core Features:
+ * - Floating "Glassmorphism" Hero Component
+ * - Interactive CSS-Grid Specialty Cards
+ * - Performance optimized lazy-loaded SVG animations
+ * 
+ * @module Home
+ */
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ShieldCheck, Star, Users, Activity, Layers, Zap, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import DepartmentsAccordion from '../components/DepartmentsAccordion';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -31,7 +46,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[95vh] flex items-center overflow-hidden bg-black">
+      <section className="relative h-[95vh] flex items-center overflow-hidden ">
         {/* Holographic Glow Foundation */}
         <div className="absolute inset-0 z-0 pointer-events-none mix-blend-screen" style={{ background: 'radial-gradient(circle at 80% 50%, rgba(0, 210, 255, 0.07) 0%, transparent 50%)' }}></div>
         
@@ -56,7 +71,7 @@ export default function Home() {
               style={{ left: `${coordinate.x}%`, top: `${coordinate.y}%` }}
             >
               <div className="w-[3px] h-[3px] bg-[#00D2FF] rounded-full mb-1 shadow-[0_0_10px_#00D2FF]"></div>
-              <span className="text-[10px] tracking-widest uppercase font-bold">{coordinate.label}</span>
+              <span className="text-[11px] md:text-[10px] tracking-widest uppercase font-bold">{coordinate.label}</span>
             </motion.div>
           )}
         </AnimatePresence>
@@ -102,7 +117,7 @@ export default function Home() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl"
           >
-            <span className="text-primary uppercase tracking-[0.6em] text-[10px] font-bold mb-10 block">
+            <span className="text-primary uppercase tracking-[0.6em] text-[11px] md:text-[10px] font-bold mb-10 block">
               Excellence in Specialty Dentistry
             </span>
             <h1 
@@ -118,13 +133,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-8">
               <Link
                 to="/book"
-                className="px-14 py-6 bg-linear-to-r from-primary to-accent-light text-white font-bold uppercase tracking-[0.25em] text-[10px] hover:scale-105 transition-all duration-500 flex items-center justify-center gap-4 group shadow-[0_0_30px_rgba(0,210,255,0.2)]"
+                className="px-8 py-5 md:px-14 md:py-6 bg-linear-to-r from-primary to-accent-light text-white font-bold uppercase tracking-[0.25em] text-[11px] md:text-[10px] hover:scale-105 transition-all duration-500 flex items-center justify-center gap-4 group shadow-[0_0_40px_rgba(0,210,255,0.3)] hover:shadow-[0_0_80px_rgba(0,210,255,0.6)]"
               >
                 Book Consultation
               </Link>
               <Link
                 to="/departments"
-                className="px-14 py-6 border border-accent-light/40 text-accent-light font-bold uppercase tracking-[0.25em] text-[10px] hover:border-accent-light hover:bg-accent-light/5 transition-all duration-500 flex items-center justify-center"
+                className="px-8 py-5 md:px-14 md:py-6 border border-accent-light/40 text-accent-light font-bold uppercase tracking-[0.25em] text-[11px] md:text-[10px] hover:border-accent-light hover:bg-accent-light/5 transition-all duration-500 flex items-center justify-center"
               >
                 Our Specialties
               </Link>
@@ -132,14 +147,56 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      {/* Core Departments Accordion - Moved to top below Hero */}
+      <section className="pt-24 lg:pt-32 pb-16 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-accent-light uppercase tracking-[0.6em] text-[11px] md:text-[10px] font-bold mb-6 block">Our Expertise</span>
+            <h2 className="text-4xl md:text-6xl font-headline italic tracking-tighter">Specialty <span className="text-primary not-italic font-medium">Departments</span></h2>
+          </div>
+          <DepartmentsAccordion />
+        </div>
+      </section>
       
+      {/* Complex Protocols */}
+      <section className="py-48 px-8 ">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 lg:mb-32 gap-8 lg:gap-12">
+            <div className="max-w-2xl">
+              <span className="text-accent-light uppercase tracking-[0.6em] text-[11px] md:text-[10px] font-bold mb-8 block">Clinical Excellence</span>
+              <h2 className="text-5xl md:text-7xl font-headline italic mb-10 tracking-tighter leading-[0.9]">Specialized Care for <br />Complex Cases</h2>
+              <p className="text-on-surface-variant font-body leading-relaxed text-lg opacity-80">
+                Our center is designed to handle the most complex dental challenges, from full-mouth reconstructions to advanced periodontal therapies.
+              </p>
+            </div>
+            <Link to="/departments" className="text-accent-light uppercase tracking-[0.3em] text-[11px] md:text-[10px] font-bold border-b border-accent-light/20 pb-4 hover:border-accent-light transition-all duration-500 mb-2">
+              View All Departments
+            </Link>
+          </div>
+
+          {/* Complex Case Protocol Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 lg:mb-32">
+            {[
+              { icon: Activity, title: 'Full-Mouth Reconstruction' },
+              { icon: Layers, title: 'Advanced Bone Grafting' },
+              { icon: Zap, title: 'Laser Periodontal Therapy (LANAP)' },
+              { icon: Target, title: 'Implant Microsurgery' }
+            ].map((item, i) => (
+              <div key={i} className="p-8 border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-accent-light/30 transition-all duration-500">
+                <item.icon className="text-accent-light mb-6 group-hover:scale-110 transition-transform duration-500" size={32} strokeWidth={1} />
+                <h4 className="text-sm font-sans font-bold tracking-widest uppercase text-white/80 group-hover:text-white transition-colors duration-300">{item.title}</h4>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Innovation Suite Section */}
-      <section className="relative py-32 overflow-hidden bg-black border-b border-white/5">
+      <section className="relative py-32 overflow-hidden  border-b border-white/5">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-20">
             <div className="lg:w-1/2">
-              <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">The Innovation Suite</span>
+              <span className="text-accent-light uppercase tracking-[0.6em] text-[11px] md:text-[10px] font-bold mb-8 block">The Innovation Suite</span>
               <h2 className="text-5xl md:text-7xl font-headline italic mb-10 tracking-tighter leading-[0.9]">Precision at <br />Every Micron.</h2>
               <p className="text-on-surface-variant text-lg font-body leading-relaxed opacity-80 max-w-xl">
                 Leveraging advanced forensic digital-twin scanning and 3D architectural mapping to visualize your clinical outcome before the first incision is made.
@@ -162,17 +219,17 @@ export default function Home() {
       </section>
 
       {/* Pillars Section */}
-      <section className="py-32 bg-black">
+      <section className="py-32 ">
         <div className="max-w-7xl mx-auto px-8 text-center">
           <div className="mb-24 max-w-3xl mx-auto">
-            <span className="text-primary uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">Our Foundation</span>
+            <span className="text-primary uppercase tracking-[0.6em] text-[11px] md:text-[10px] font-bold mb-8 block">Our Foundation</span>
             <h2 className="text-5xl md:text-8xl font-headline italic mb-12 tracking-tighter leading-[0.9]">Pillars of <br />Smile Life</h2>
             <p className="text-on-surface-variant text-lg font-body leading-relaxed opacity-80">
               Our multi-disciplinary approach ensures that every aspect of your oral health is managed by a dedicated specialist, providing a seamless bridge between primary care and advanced therapy.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-20 lg:gap-32 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 lg:gap-32 max-w-6xl mx-auto">
             {[
               { icon: ShieldCheck, title: 'CLINICAL EXCELLENCE', desc: 'Uncompromising standards in every procedure.' },
               { icon: Star, title: 'LUXURY EXPERIENCE', desc: 'A concierge-level sanctuary for patient comfort.' },
@@ -193,7 +250,7 @@ export default function Home() {
       </section>
 
       {/* Specialist's Philosophy Section */}
-      <section className="py-32 bg-black border-y border-white/5">
+      <section className="py-32  border-y border-white/5">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex flex-col lg:flex-row gap-24 items-center">
             <div className="lg:w-1/2">
@@ -209,7 +266,7 @@ export default function Home() {
               </div>
             </div>
             <div className="lg:w-1/2">
-              <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">The Specialist's Philosophy</span>
+              <span className="text-accent-light uppercase tracking-[0.6em] text-[11px] md:text-[10px] font-bold mb-8 block">The Specialist's Philosophy</span>
               <h2 className="text-5xl md:text-7xl font-headline italic mb-10 tracking-tighter leading-[0.9]">A Commitment to <br />Biological Integrity.</h2>
               <p className="text-on-surface-variant text-lg font-body leading-relaxed opacity-80 mb-12">
                 Dr. Sara Alhachache specializes in complex periodontal therapies and microsurgical reconstructions. Her approach balances systemic oral health with the poetry of dental geometry.
@@ -225,100 +282,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Specialties */}
-      <section className="py-48 px-8 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
-            <div className="max-w-2xl">
-              <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">Clinical Excellence</span>
-              <h2 className="text-5xl md:text-7xl font-headline italic mb-10 tracking-tighter leading-[0.9]">Specialized Care for <br />Complex Cases</h2>
-              <p className="text-on-surface-variant font-body leading-relaxed text-lg opacity-80">
-                Our center is designed to handle the most complex dental challenges, from full-mouth reconstructions to advanced periodontal therapies.
-              </p>
-            </div>
-            <Link to="/departments" className="text-accent-light uppercase tracking-[0.3em] text-[10px] font-bold border-b border-accent-light/20 pb-4 hover:border-accent-light transition-all duration-500 mb-2">
-              View All Departments
-            </Link>
-          </div>
-
-          {/* Complex Case Protocol Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
-            {[
-              { icon: Activity, title: 'Full-Mouth Reconstruction' },
-              { icon: Layers, title: 'Advanced Bone Grafting' },
-              { icon: Zap, title: 'Laser Periodontal Therapy (LANAP)' },
-              { icon: Target, title: 'Implant Microsurgery' }
-            ].map((item, i) => (
-              <div key={i} className="p-8 border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-accent-light/30 transition-all duration-500">
-                <item.icon className="text-accent-light mb-6 group-hover:scale-110 transition-transform duration-500" size={32} strokeWidth={1} />
-                <h4 className="text-sm font-sans font-bold tracking-widest uppercase text-white/80 group-hover:text-white transition-colors duration-300">{item.title}</h4>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-12">
-            {[
-              { 
-                title: 'Orthodontics', 
-                desc: 'Alignment is the poetry of dental geometry. We architect structural harmony.', 
-                href: '/orthodontics',
-                image: '/assets/images/invisalign.jpeg',
-                alt: 'Digital Smile Design and Orthodontic Alignment in Corpus Christi, TX'
-              },
-              { 
-                title: 'Periodontics', 
-                desc: 'The foundation of brilliance lies beneath the surface. We utilize microsurgical protocols for structural permanence.', 
-                href: '/periodontics',
-                image: '/assets/images/dental-implant.jpeg',
-                alt: 'Specialized Periodontal and Implant Surgery in Corpus Christi, TX'
-              },
-              { 
-                title: 'General Dentistry', 
-                desc: 'Health is the canvas upon which we paint. Surgical-grade commitment to total oral biological health.', 
-                href: '/general-dentistry',
-                image: '/assets/images/general-dentist-chair.jpeg',
-                alt: 'Advanced Diagnostic Mapping and General Oral Health in Corpus Christi, TX'
-              }
-            ].map((spec, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.2 }}
-                className="group flex flex-col bg-surface-container-high overflow-hidden"
-              >
-              <Link to={spec.href} className="flex flex-col w-full h-full group/link">
-                <div className="aspect-[4/5] overflow-hidden relative">
-                  <img 
-                    src={spec.image} 
-                    alt={spec.alt}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                    referrerPolicy="no-referrer"
-                  loading="lazy"
-
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500"></div>
-                </div>
-                <div className="p-10 lg:p-14 flex flex-col flex-grow">
-                  <h4 className="text-3xl lg:text-4xl font-headline italic mb-8 group-hover:text-accent-light transition-colors duration-300 tracking-tighter">{spec.title}</h4>
-                  <p className="text-on-surface-variant text-sm font-body leading-relaxed mb-12 flex-grow opacity-70 group-hover:opacity-100 transition-opacity duration-500">{spec.desc}</p>
-                  <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent-light flex items-center gap-4">
-                    EXPLORE SPECIALTY <ArrowRight size={14} className="group-hover/link:translate-x-2 transition-transform duration-300" />
-                  </div>
-                </div>
-              </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Concierge Journey Section */}
-      <section className="py-48 bg-black border-t border-white/5 overflow-hidden">
+      <section className="py-48  border-t border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-32">
-            <span className="text-accent-light uppercase tracking-[0.6em] text-[10px] font-bold mb-8 block">The Sanctuary Experience</span>
+          <div className="text-center mb-16 lg:mb-32">
+            <span className="text-accent-light uppercase tracking-[0.6em] text-[11px] md:text-[10px] font-bold mb-8 block">The Sanctuary Experience</span>
             <h2 className="text-5xl md:text-8xl font-headline italic tracking-tighter leading-[0.9]">The Concierge Journey</h2>
           </div>
 

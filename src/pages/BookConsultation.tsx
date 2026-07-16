@@ -62,7 +62,7 @@ export default function BookConsultation() {
   };
 
   return (
-    <div className="relative min-h-screen bg-black pt-32 pb-24 overflow-hidden flex items-center justify-center">
+    <div className="relative min-h-screen  pt-32 pb-24 overflow-hidden flex items-center justify-center">
       {/* Abstract Background Accents */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
@@ -266,7 +266,7 @@ export default function BookConsultation() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full relative group overflow-hidden bg-linear-to-r from-[#0056B3] to-[#00D2FF] text-white py-5 font-body font-bold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_0_20px_rgba(0,86,179,0.3)] hover:shadow-[0_0_30px_rgba(0,210,255,0.5)] disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full relative group overflow-hidden bg-linear-to-r from-[#0056B3] to-[#00D2FF] text-white py-5 font-body font-bold text-xs tracking-[0.2em] uppercase transition-all shadow-[0_0_40px_rgba(0,210,255,0.3)] hover:shadow-[0_0_80px_rgba(0,210,255,0.6)] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-3">
                     {isSubmitting ? 'Processing Request...' : 'Request Consultation'}

@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
+import About from './pages/About';
 import Departments from './pages/Departments';
 import PatientCenter from './pages/PatientCenter';
 import ProviderCenter from './pages/ProviderCenter';
@@ -53,6 +54,7 @@ export default function App() {
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+              <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
               <Route path="/departments" element={<PageWrapper><Departments /></PageWrapper>} />
               <Route path="/orthodontics" element={<PageWrapper><Orthodontics /></PageWrapper>} />
               <Route path="/periodontics" element={<PageWrapper><Periodontics /></PageWrapper>} />

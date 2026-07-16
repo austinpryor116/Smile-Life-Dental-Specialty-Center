@@ -1,0 +1,17 @@
+{
+  "name": "Smile Life Dental Specialty Center",
+  "short_name": "Smile Life",
+  "description": "Specialty Dental Center in Corpus Christi, Texas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#00D2FF",
+  "icons": [
+    {
+      "src": "/assets/images/smile-life-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

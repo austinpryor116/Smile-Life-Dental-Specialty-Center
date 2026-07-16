@@ -106,7 +106,7 @@ const POST_OP_DATA = [
 ];
 
 // Interactive Accordion Component mapped for localized usage
-const AccordionItem = ({ title, content, isOpen, onClick }: { title: string, content: React.ReactNode, isOpen: boolean, onClick: () => void }) => {
+const AccordionItem = ({ title, content, isOpen, onClick }: { key?: React.Key, title: string, content: React.ReactNode, isOpen: boolean, onClick: () => void }) => {
   return (
     <div className="mb-4">
       <button 
@@ -168,7 +168,7 @@ export default function PostOpInstructions() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="pt-48 pb-48 bg-black min-h-screen">
+    <div className="pt-48 pb-48  min-h-screen">
       <div className="max-w-4xl mx-auto px-8 md:px-12">
         <Link to="/patient-center" className="inline-flex items-center gap-3 text-white/50 hover:text-[#00D2FF] transition-colors mb-16 group font-bold tracking-widest uppercase text-[10px]">
           <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-300" /> Back to Patient Center
