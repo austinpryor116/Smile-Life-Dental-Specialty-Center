@@ -40,6 +40,7 @@ export default function Periodontics() {
           src="/assets/video/Implant.mov" 
           autoPlay 
           muted 
+          defaultMuted
           playsInline 
           className="absolute inset-0 w-full h-full object-cover object-top opacity-50"
         />

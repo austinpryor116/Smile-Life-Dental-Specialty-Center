@@ -97,6 +97,7 @@ export default function Home() {
               autoPlay
               loop
               muted
+              defaultMuted
               playsInline
               preload="auto"
               className="w-[140%] h-[140%] max-w-none object-contain mix-blend-screen animate-[pulse_4s_cubic-bezier(0.4,0,0.6,1)_infinite]"
