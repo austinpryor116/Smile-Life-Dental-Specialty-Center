@@ -69,7 +69,7 @@ export default function Navbar() {
     )}>
       <Link to="/" className="z-50 flex items-center group">
         <img 
-          src="/assets/images/smile-life-logo.svg" 
+          src="assets/images/smile-life-logo.svg" 
           alt="Smile Life Dental Specialty Center Logo" 
           className="h-16 md:h-24 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
           referrerPolicy="no-referrer"

@@ -103,7 +103,7 @@ export default function PatientCenter() {
             <div className="relative">
               <div className="aspect-[4/5] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent p-4 overflow-hidden rounded-[2rem]">
                 <img
-                  src="/assets/images/general-dentist-office.jpeg"
+                  src="assets/images/general-dentist-office.jpeg"
                   alt="Luxury Suite"
                   className="w-full h-full object-cover grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                   referrerPolicy="no-referrer"

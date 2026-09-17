@@ -21,7 +21,7 @@ const TEAM = [
     name: 'Dr. Sara',
     role: 'Clinical Director & Specialty Lead',
     bio: 'Dr. Sara is a pioneering force in advanced dental reconstruction and periodontal therapy. She built Smile Life on the philosophy that a world-class smile requires uncompromising biological precision.',
-    image: '/assets/images/dr-sara-profile.jpeg',
+    image: 'assets/images/dr-sara-profile.jpeg',
     objectPosition: 'center 10%',
     link: '/periodontics'
   },
@@ -29,7 +29,7 @@ const TEAM = [
     name: 'Dr. Vasquez',
     role: 'Lead Prosthodontist',
     bio: 'With over a decade of specialized training in complex restorations and full-mouth rehabilitations, Dr. Vasquez merges advanced material science with unmatched clinical artistry.',
-    image: '/assets/images/dr-vasquez.jpg',
+    image: 'assets/images/dr-vasquez.jpg',
     objectPosition: 'center 20%',
     link: '/general-dentistry'
   }
@@ -101,7 +101,7 @@ export default function About() {
           </div>
           <div className="relative h-[600px] rounded-[2rem] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent overflow-hidden group p-4 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
             <div className="absolute inset-0 bg-[#00D2FF]/10 z-10 group-hover:bg-transparent transition-colors duration-700 rounded-[2rem]"></div>
-            <img src="/assets/images/general-dentist-office.jpeg" alt="State of the art dental office" className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 rounded-[2rem]" />
+            <img src="assets/images/general-dentist-office.jpeg" alt="State of the art dental office" className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 rounded-[2rem]" />
           </div>
         </div>
       </section>

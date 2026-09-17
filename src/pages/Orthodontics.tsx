@@ -38,7 +38,7 @@ export default function Orthodontics() {
           <div className="relative">
             <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent p-4 overflow-hidden rounded-[2rem]">
               <img
-                src="/assets/images/invisalign.jpeg"
+                src="assets/images/invisalign.jpeg"
                 alt="Invisalign Master Provider"
                 className="w-full h-auto max-h-[650px] object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                 referrerPolicy="no-referrer"
@@ -74,7 +74,7 @@ export default function Orthodontics() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 lg:mb-48">
           <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent p-4 overflow-hidden relative group rounded-[2rem]">
             <img 
-              src="/assets/images/braces-multicolor.jpeg" 
+              src="assets/images/braces-multicolor.jpeg" 
               alt="Multi-Color Braces Integration" 
               className="w-full h-auto md:h-[400px] object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000" 
               loading="lazy"
@@ -83,7 +83,7 @@ export default function Orthodontics() {
           </div>
           <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent p-4 overflow-hidden relative group rounded-[2rem]">
             <img 
-              src="/assets/images/braces-after.jpeg" 
+              src="assets/images/braces-after.jpeg" 
               alt="Orthodontic Final Results" 
               className="w-full h-auto md:h-[400px] object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000" 
               loading="lazy"

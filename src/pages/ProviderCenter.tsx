@@ -128,16 +128,16 @@ export default function ProviderCenter() {
             
             <div className="space-y-6">
               <a 
-                href="/assets/downloads/smile-life-periodontics-referral-form.pdf" 
-                onClick={(e) => handleDownload(e, "/assets/downloads/smile-life-periodontics-referral-form.pdf", "Smile Life Periodontics Referral Form.pdf")}
+                href="assets/downloads/smile-life-periodontics-referral-form.pdf" 
+                onClick={(e) => handleDownload(e, "assets/downloads/smile-life-periodontics-referral-form.pdf", "Smile Life Periodontics Referral Form.pdf")}
                 className="w-full flex items-center justify-between px-8 py-6 border border-white/20 hover:border-[#00D2FF] text-[#00D2FF] font-body text-xs font-bold tracking-[0.2em] uppercase transition-all group bg-surface-container-low"
               >
                 Download Smile Life Periodontics Referral Form (PDF)
                 <FileDown size={20} className="group-hover:translate-y-1 transition-transform" />
               </a>
               <a 
-                href="/assets/downloads/orthodontics-referral-pad.pdf" 
-                onClick={(e) => handleDownload(e, "/assets/downloads/orthodontics-referral-pad.pdf", "Orthodontics Referral Pad.pdf")}
+                href="assets/downloads/orthodontics-referral-pad.pdf" 
+                onClick={(e) => handleDownload(e, "assets/downloads/orthodontics-referral-pad.pdf", "Orthodontics Referral Pad.pdf")}
                 className="w-full flex items-center justify-between px-8 py-6 border border-white/20 hover:border-[#00D2FF] text-[#00D2FF] font-body text-xs font-bold tracking-[0.2em] uppercase transition-all group bg-surface-container-low"
               >
                 Download Orthodontics Referral Pad (PDF)

@@ -37,7 +37,7 @@ export default function Periodontics() {
       <section className="h-screen relative overflow-hidden  flex items-center justify-center border-b border-white/10 mb-32">
         <video 
           ref={videoRef}
-          src="/assets/video/Implant.mov" 
+          src="assets/video/Implant.mp4" 
           autoPlay 
           muted 
           defaultMuted
@@ -87,7 +87,7 @@ export default function Periodontics() {
               className="relative h-[400px] md:h-auto md:aspect-[4/5] overflow-hidden border border-white/5 p-4 bg-white/5 rounded-[2rem]"
             >
               <img 
-                src="/assets/images/dr-sara-holding-implant.jpg" 
+                src="assets/images/dr-sara-holding-implant.jpg" 
                 alt="Dr. Sara Alhachache" 
                 className="w-full h-full object-cover object-[center_10%]"
                 referrerPolicy="no-referrer"

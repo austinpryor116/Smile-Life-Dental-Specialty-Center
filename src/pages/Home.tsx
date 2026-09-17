@@ -106,7 +106,7 @@ export default function Home() {
                 clipPath: 'circle(35% at 50% 50%)'
               }}
             >
-              <source src="/assets/video/hero-molar-3d.mp4" type="video/mp4" />
+              <source src="assets/video/hero-molar-3d.mp4" type="video/mp4" />
             </video>
           </div>
         </motion.div>
@@ -206,7 +206,7 @@ export default function Home() {
             <div className="lg:w-1/2">
               <div className="relative aspect-video overflow-hidden border border-white/5 p-4 bg-white/5 backdrop-blur-sm">
                 <img 
-                  src="/assets/images/3d-scan.jpeg" 
+                  src="assets/images/3d-scan.jpeg" 
                   alt="3D Intraoral Scanner Tip" 
                   className="w-full h-full object-cover grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                   referrerPolicy="no-referrer"
@@ -257,7 +257,7 @@ export default function Home() {
             <div className="lg:w-1/2">
               <div className="aspect-[3/4] overflow-hidden border border-white/5 p-6 bg-white/5">
                 <img 
-                  src="/assets/images/dr-sara-holding-implant.jpg" 
+                  src="assets/images/dr-sara-holding-implant.jpg" 
                   alt="Dr. Sara Alhachache - Specialist Portrait" 
                   className="w-full h-full object-cover object-[center_10%]"
                   referrerPolicy="no-referrer"

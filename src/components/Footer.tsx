@@ -62,7 +62,7 @@ export default function Footer() {
             <div className="mb-8">
               <Link to="/">
                 <img 
-                  src="/assets/images/smile-life-logo.svg" 
+                  src="assets/images/smile-life-logo.svg" 
                   alt="Smile Life Dental Specialty Center Logo" 
                   className="h-16 w-auto"
                   referrerPolicy="no-referrer"

@@ -24,7 +24,7 @@ export default function GeneralDentistry() {
           <div className="relative">
             <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent p-4 overflow-hidden rounded-[2rem]">
               <img
-                src="/assets/images/general-dentist-office.jpeg"
+                src="assets/images/general-dentist-office.jpeg"
                 alt="General Dentistry"
                 className="w-full h-auto max-h-[600px] object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
                 referrerPolicy="no-referrer"
@@ -47,7 +47,7 @@ export default function GeneralDentistry() {
               className="relative aspect-[4/5] overflow-hidden border border-white/5 p-4 bg-white/5"
             >
               <img 
-                src="/assets/images/dr-vasquez.jpg" 
+                src="assets/images/dr-vasquez.jpg" 
                 alt="Dr. Vasquez" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

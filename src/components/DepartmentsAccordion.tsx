@@ -9,21 +9,21 @@ export const DEPARTMENTS_DATA = [
     title: 'General Dentistry',
     href: '/general-dentistry',
     description: 'The foundation of every beautiful smile is meticulous general care. Our general dentistry department provides high-end preventive and restorative services with clinical precision.',
-    image: '/assets/images/general-dentist-chair.jpeg',
+    image: 'assets/images/general-dentist-chair.jpeg',
     shortTitle: 'General'
   },
   {
     title: 'Periodontics',
     href: '/periodontics',
     description: 'Specializing in the foundation of your smile. Our periodontists utilize laser therapy and advanced grafting techniques to treat complex gum disease.',
-    image: '/assets/images/dental-implant.jpeg',
+    image: 'assets/images/dental-implant.jpeg',
     shortTitle: 'Perio'
   },
   {
     title: 'Orthodontics',
     href: '/orthodontics',
     description: 'Beyond simple alignment, our orthodontic department focuses on craniofacial aesthetics and functional harmony.',
-    image: '/assets/images/invisalign.jpeg',
+    image: 'assets/images/invisalign.jpeg',
     shortTitle: 'Ortho'
   }
 ];
